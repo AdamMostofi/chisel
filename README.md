@@ -3,18 +3,19 @@
   v2 — Minimalist. Precise. Complete.
 -->
 
-<p align="left">
+<p align="center">
   <img src="assets/logo.png" alt="chisel logo" height="64">
 </p>
 
-**A tool for carving away excess.**
-
-[![Version](https://img.shields.io/badge/version-2.0.0-000?style=flat-square)](https://github.com/AdamMostofi/chisel)
-[![License](https://img.shields.io/badge/license-MIT-555?style=flat-square)](LICENSE)
-[![Stars](https://img.shields.io/github/stars/AdamMostofi/chisel?style=flat-square)](https://github.com/AdamMostofi/chisel)
-[![Language](https://img.shields.io/badge/language-TypeScript-3178C6?style=flat-square)](.)
-
-`#yagni` `#minimal-code` `#ai-discipline` `#over-engineering-guard`
+<p align="center">
+  <strong>A tool for carving away excess.</strong><br>
+  <a href="https://github.com/AdamMostofi/chisel"><img src="https://img.shields.io/badge/version-2.0.0-000?style=flat-square" alt="Version"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-555?style=flat-square" alt="License"></a>
+  <a href="https://github.com/AdamMostofi/chisel"><img src="https://img.shields.io/github/stars/AdamMostofi/chisel?style=flat-square" alt="Stars"></a>
+  <a href="."><img src="https://img.shields.io/badge/language-TypeScript-3178C6?style=flat-square" alt="Language"></a>
+  <br>
+  <code>#yagni</code> <code>#minimal-code</code> <code>#ai-discipline</code> <code>#over-engineering-guard</code>
+</p>
 
 Chisel is a disciplined engineering principle for AI agents. It injects a decision ladder into every coding turn -- questioning whether code needs to exist, whether files are left cleaner than found, whether the standard library covers the task, and whether abstractions are proven before extracted. The result is code that looks like a person wrote it: deliberate, minimal, correct.
 
@@ -34,6 +35,8 @@ Chisel is language-agnostic (TypeScript, Python, Go, Rust, any). It works at the
 
 ## Principles
 
+<div align="center">
+
 | Principle | Meaning |
 |-----------|---------|
 | **YAGNI (You Ain't Gonna Need It)** | Only build what the current requirement demands. Speculative generality, future-proofing hooks, and unused parameters are waste. Delete them. |
@@ -43,6 +46,8 @@ Chisel is language-agnostic (TypeScript, Python, Go, Rust, any). It works at the
 | **Stdlib First** | Standard library before dependencies. Native platform before libraries. Installed package before new one. `<input type="date">` over a date-picker library. CSS over JS. DB constraint over application validation. |
 | **Bug Fix = Root Cause** | A report names a symptom. Grep every caller before you edit. Fix where all callers route through, not where the ticket says. One guard in the shared function is a smaller diff than a guard in every caller. |
 | **Comment Convention** | Every shortcut uses a `chisel:` prefix. The comment names the ceiling and the upgrade path. Example: `// chisel: global lock, per-account locks if throughput matters`. This signals intent, not ignorance. |
+
+</div>
 
 ---
 
@@ -80,12 +85,16 @@ Outputs a structured verdict: ship if clean, revise if any check fails.
 
 This is the critical clarification. The system has two operating modes and a set of always-active safety guardrails.
 
+<div align="center">
+
 | Aspect | Behavior |
 |--------|----------|
 | Pass 1 (Ladder) | Runs automatically on every coding turn. The agent always climbs the ladder before writing code. No toggle. |
 | Pass 2 (Gate) | In `full` mode: auto-runs after every write. In `lite` mode: manual via `/chisel-gate`. |
 | Safety Guardrails | Baked into the skill definition. Never simplified away. Always active regardless of mode. |
 | User Override | User says "build the full version" -- chisel steps aside. Delivers what was asked. No re-arguing. |
+
+</div>
 
 ---
 
@@ -156,6 +165,8 @@ Business-logic pipeline: order validation, tiered discounts, regional tax, invoi
 Analytical comparison of no-skill vs chiseled reference implementations for 7 tasks (6 simple + 1 complex business pipeline). Reference implementations are hand-written to the same spec -- the difference is structural, not functional.
 
 ### Combined (All 7 Tasks)
+
+<div align="center">
 
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 310" width="600" height="310" role="img" aria-label="Chisel benchmark bar chart: lines of code, tokens, dependencies, abstractions, complexity, file size. No-skill values shown in gray bars, chiseled values shown in black bars, with percentage reduction for each metric.">
   <style>
@@ -233,7 +244,75 @@ Analytical comparison of no-skill vs chiseled reference implementations for 7 ta
 | Complexity | 140 | 31 | -78% |
 | File size | 15,954 B | 3,397 B | -79% |
 
+</div>
+
 ### Simple Tasks (6)
+
+<div align="center">
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 310" width="600" height="310" role="img" aria-label="Simple tasks benchmark: lines of code, tokens, dependencies, abstractions, complexity, file size. No-skill in gray, chiseled in black, with percentage reduction.">
+  <style>
+    text.label { font: 12px system-ui, -apple-system, sans-serif; fill: #333; }
+    text.value { font: 11px system-ui, -apple-system, sans-serif; }
+    text.title { font: 13px system-ui, -apple-system, sans-serif; font-weight: 700; fill: #111; }
+    text.pct   { font: 10px system-ui, -apple-system, sans-serif; font-weight: 700; }
+    .bar-before { fill: #555; }
+    .bar-after  { fill: #000; }
+  </style>
+  <text x="300" y="18" text-anchor="middle" class="title">Simple Tasks (6)</text>
+  <rect x="180" y="28" width="10" height="10" class="bar-before" rx="1"/>
+  <text x="194" y="37" class="label">No-skill</text>
+  <rect x="260" y="28" width="10" height="10" class="bar-after" rx="1"/>
+  <text x="274" y="37" class="label">Chiseled</text>
+  <line x1="140" y1="52" x2="570" y2="52" stroke="#eee" stroke-width="0.5"/>
+  <line x1="140" y1="96" x2="570" y2="96" stroke="#eee" stroke-width="0.5"/>
+  <line x1="140" y1="140" x2="570" y2="140" stroke="#eee" stroke-width="0.5"/>
+  <line x1="140" y1="184" x2="570" y2="184" stroke="#eee" stroke-width="0.5"/>
+  <line x1="140" y1="228" x2="570" y2="228" stroke="#eee" stroke-width="0.5"/>
+  <line x1="140" y1="272" x2="570" y2="272" stroke="#eee" stroke-width="0.5"/>
+  <!-- LOC: 331 vs 72 -->
+  <text x="136" y="75" text-anchor="end" class="label">LOC</text>
+  <rect x="142" y="62" width="370" height="12" class="bar-before" rx="2"/>
+  <rect x="142" y="78" width="80" height="12" class="bar-after" rx="2"/>
+  <text x="518" y="73" class="value" fill="#555">331</text>
+  <text x="226" y="89" class="value" fill="#fff">72</text>
+  <text x="520" y="89" class="pct" fill="#111">-78%</text>
+  <!-- Tokens: 2259 vs 550 -->
+  <text x="136" y="119" text-anchor="end" class="label">Tokens</text>
+  <rect x="142" y="106" width="370" height="12" class="bar-before" rx="2"/>
+  <rect x="142" y="122" width="90" height="12" class="bar-after" rx="2"/>
+  <text x="518" y="117" class="value" fill="#555">2,259</text>
+  <text x="236" y="133" class="value" fill="#fff">550</text>
+  <text x="520" y="133" class="pct" fill="#111">-76%</text>
+  <!-- Deps: 9 vs 5 -->
+  <text x="136" y="163" text-anchor="end" class="label">Deps</text>
+  <rect x="142" y="150" width="370" height="12" class="bar-before" rx="2"/>
+  <rect x="142" y="166" width="206" height="12" class="bar-after" rx="2"/>
+  <text x="518" y="161" class="value" fill="#555">9</text>
+  <text x="352" y="177" class="value" fill="#fff">5</text>
+  <text x="520" y="177" class="pct" fill="#111">-44%</text>
+  <!-- Abstractions: 23 vs 6 -->
+  <text x="136" y="207" text-anchor="end" class="label">Abstractions</text>
+  <rect x="142" y="194" width="370" height="12" class="bar-before" rx="2"/>
+  <rect x="142" y="210" width="97" height="12" class="bar-after" rx="2"/>
+  <text x="518" y="205" class="value" fill="#555">23</text>
+  <text x="243" y="221" class="value" fill="#fff">6</text>
+  <text x="520" y="221" class="pct" fill="#111">-74%</text>
+  <!-- Complexity: 71 vs 17 -->
+  <text x="136" y="251" text-anchor="end" class="label">Complexity</text>
+  <rect x="142" y="238" width="370" height="12" class="bar-before" rx="2"/>
+  <rect x="142" y="254" width="89" height="12" class="bar-after" rx="2"/>
+  <text x="518" y="249" class="value" fill="#555">71</text>
+  <text x="235" y="265" class="value" fill="#fff">17</text>
+  <text x="520" y="265" class="pct" fill="#111">-76%</text>
+  <!-- File size: 9610 vs 2145 -->
+  <text x="136" y="295" text-anchor="end" class="label">File size</text>
+  <rect x="142" y="282" width="370" height="12" class="bar-before" rx="2"/>
+  <rect x="142" y="298" width="83" height="12" class="bar-after" rx="2"/>
+  <text x="518" y="293" class="value" fill="#555">9,610 B</text>
+  <text x="229" y="309" class="value" fill="#fff">2,145 B</text>
+  <text x="520" y="309" class="pct" fill="#111">-78%</text>
+</svg>
 
 | Metric | No-skill | Chiseled | Reduction |
 |--------|----------|----------|-----------|
@@ -244,7 +323,75 @@ Analytical comparison of no-skill vs chiseled reference implementations for 7 ta
 | Complexity | 71 | 17 | -76% |
 | File size | 9,610 B | 2,145 B | -78% |
 
+</div>
+
 ### Complex Task (Order Pipeline)
+
+<div align="center">
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 310" width="600" height="310" role="img" aria-label="Complex task benchmark: order pipeline. Lines of code, tokens, dependencies, abstractions, complexity, file size. No-skill in gray, chiseled in black, with percentage reduction.">
+  <style>
+    text.label { font: 12px system-ui, -apple-system, sans-serif; fill: #333; }
+    text.value { font: 11px system-ui, -apple-system, sans-serif; }
+    text.title { font: 13px system-ui, -apple-system, sans-serif; font-weight: 700; fill: #111; }
+    text.pct   { font: 10px system-ui, -apple-system, sans-serif; font-weight: 700; }
+    .bar-before { fill: #555; }
+    .bar-after  { fill: #000; }
+  </style>
+  <text x="300" y="18" text-anchor="middle" class="title">Complex Task (Order Pipeline)</text>
+  <rect x="180" y="28" width="10" height="10" class="bar-before" rx="1"/>
+  <text x="194" y="37" class="label">No-skill</text>
+  <rect x="260" y="28" width="10" height="10" class="bar-after" rx="1"/>
+  <text x="274" y="37" class="label">Chiseled</text>
+  <line x1="140" y1="52" x2="570" y2="52" stroke="#eee" stroke-width="0.5"/>
+  <line x1="140" y1="96" x2="570" y2="96" stroke="#eee" stroke-width="0.5"/>
+  <line x1="140" y1="140" x2="570" y2="140" stroke="#eee" stroke-width="0.5"/>
+  <line x1="140" y1="184" x2="570" y2="184" stroke="#eee" stroke-width="0.5"/>
+  <line x1="140" y1="228" x2="570" y2="228" stroke="#eee" stroke-width="0.5"/>
+  <line x1="140" y1="272" x2="570" y2="272" stroke="#eee" stroke-width="0.5"/>
+  <!-- LOC: 236 vs 32 -->
+  <text x="136" y="75" text-anchor="end" class="label">LOC</text>
+  <rect x="142" y="62" width="370" height="12" class="bar-before" rx="2"/>
+  <rect x="142" y="78" width="50" height="12" class="bar-after" rx="2"/>
+  <text x="518" y="73" class="value" fill="#555">236</text>
+  <text x="196" y="89" class="value" fill="#fff">32</text>
+  <text x="520" y="89" class="pct" fill="#111">-86%</text>
+  <!-- Tokens: 1329 vs 394 -->
+  <text x="136" y="119" text-anchor="end" class="label">Tokens</text>
+  <rect x="142" y="106" width="370" height="12" class="bar-before" rx="2"/>
+  <rect x="142" y="122" width="110" height="12" class="bar-after" rx="2"/>
+  <text x="518" y="117" class="value" fill="#555">1,329</text>
+  <text x="256" y="133" class="value" fill="#fff">394</text>
+  <text x="520" y="133" class="pct" fill="#111">-70%</text>
+  <!-- Deps: 5 vs 1 -->
+  <text x="136" y="163" text-anchor="end" class="label">Deps</text>
+  <rect x="142" y="150" width="370" height="12" class="bar-before" rx="2"/>
+  <rect x="142" y="166" width="74" height="12" class="bar-after" rx="2"/>
+  <text x="518" y="161" class="value" fill="#555">5</text>
+  <text x="220" y="177" class="value" fill="#fff">1</text>
+  <text x="520" y="177" class="pct" fill="#111">-80%</text>
+  <!-- Abstractions: 41 vs 2 -->
+  <text x="136" y="207" text-anchor="end" class="label">Abstractions</text>
+  <rect x="142" y="194" width="370" height="12" class="bar-before" rx="2"/>
+  <rect x="142" y="210" width="18" height="12" class="bar-after" rx="2"/>
+  <text x="518" y="205" class="value" fill="#555">41</text>
+  <text x="164" y="221" class="value" fill="#fff">2</text>
+  <text x="520" y="221" class="pct" fill="#111">-95%</text>
+  <!-- Complexity: 69 vs 14 -->
+  <text x="136" y="251" text-anchor="end" class="label">Complexity</text>
+  <rect x="142" y="238" width="370" height="12" class="bar-before" rx="2"/>
+  <rect x="142" y="254" width="75" height="12" class="bar-after" rx="2"/>
+  <text x="518" y="249" class="value" fill="#555">69</text>
+  <text x="221" y="265" class="value" fill="#fff">14</text>
+  <text x="520" y="265" class="pct" fill="#111">-80%</text>
+  <!-- File size: 6344 vs 1252 -->
+  <text x="136" y="295" text-anchor="end" class="label">File size</text>
+  <rect x="142" y="282" width="370" height="12" class="bar-before" rx="2"/>
+  <rect x="142" y="298" width="73" height="12" class="bar-after" rx="2"/>
+  <text x="518" y="293" class="value" fill="#555">6,344 B</text>
+  <text x="219" y="309" class="value" fill="#fff">1,252 B</text>
+  <text x="520" y="309" class="pct" fill="#111">-80%</text>
+</svg>
 
 | Metric | No-skill | Chiseled | Reduction |
 |--------|----------|----------|-----------|
@@ -254,6 +401,8 @@ Analytical comparison of no-skill vs chiseled reference implementations for 7 ta
 | Abstractions | 41 | 2 | -95% |
 | Complexity | 69 | 14 | -80% |
 | File size | 6,344 B | 1,252 B | -80% |
+
+</div>
 
 Results represent the ceiling of what chisel enables. Real LLM output varies but converges toward these numbers. Methodology and reference implementations in [benchmarks/](benchmarks/).
 
@@ -277,6 +426,8 @@ Or point at a local checkout:
 
 ## Commands
 
+<div align="center">
+
 | Command | What it does |
 |---------|-------------|
 | `/chisel` | Report current mode (full, lite, or off). |
@@ -284,6 +435,8 @@ Or point at a local checkout:
 | `/chisel lite` | Set lite mode (ladder only, manual gate). |
 | `/chisel off` | Disable chisel. |
 | `/chisel-gate` | Trigger discipline gate manually (lite mode). |
+
+</div>
 
 ---
 
