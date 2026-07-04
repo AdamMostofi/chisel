@@ -162,72 +162,16 @@ Analytical comparison of no-skill vs chiseled reference implementations for 7 ta
 
 <div align="center">
 
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 360" width="660" height="360" role="img" aria-label="Combined benchmark: no-skill (gray bars) vs chiseled (dark bars) across 6 metrics with percentage reduction.">
-  <style>
-    text.l { font: 13px/1.2 system-ui, -apple-system, sans-serif; fill: #333; }
-    text.v { font: 12px/1.2 system-ui, -apple-system, sans-serif; font-weight: 600; }
-    text.t { font: 14px/1.2 system-ui, -apple-system, sans-serif; font-weight: 700; fill: #111; }
-    text.p { font: 11px/1.2 system-ui, -apple-system, sans-serif; font-weight: 700; }
-    .b0 { fill: #bbb; }
-    .b1 { fill: #222; }
-  </style>
-  <text x="330" y="20" text-anchor="middle" class="t">Combined (7 tasks)</text>
-  <rect x="175" y="32" width="10" height="10" class="b0" rx="1"/>
-  <text x="189" y="41" class="l">No-skill</text>
-  <rect x="260" y="32" width="10" height="10" class="b1" rx="1"/>
-  <text x="274" y="41" class="l">Chiseled</text>
-  <!-- LOC: 567 vs 104 -->
-  <text x="130" y="73" text-anchor="end" class="l">LOC</text>
-  <rect x="136" y="56" width="380" height="16" class="b0" rx="3"/>
-  <rect x="136" y="80" width="70" height="16" class="b1" rx="3"/>
-  <text x="522" y="71" class="v" fill="#888">567</text>
-  <text x="216" y="95" class="v" fill="#fff">104</text>
-  <text x="560" y="95" class="p" fill="#111">-82%</text>
-  <!-- Tokens: 3588 vs 944 -->
-  <text x="130" y="123" text-anchor="end" class="l">Tokens</text>
-  <rect x="136" y="106" width="380" height="16" class="b0" rx="3"/>
-  <rect x="136" y="130" width="100" height="16" class="b1" rx="3"/>
-  <text x="522" y="121" class="v" fill="#888">3,588</text>
-  <text x="246" y="145" class="v" fill="#fff">944</text>
-  <text x="560" y="145" class="p" fill="#111">-74%</text>
-  <!-- Deps: 14 vs 6 -->
-  <text x="130" y="173" text-anchor="end" class="l">Deps</text>
-  <rect x="136" y="156" width="380" height="16" class="b0" rx="3"/>
-  <rect x="136" y="180" width="163" height="16" class="b1" rx="3"/>
-  <text x="522" y="171" class="v" fill="#888">14</text>
-  <text x="309" y="195" class="v" fill="#fff">6</text>
-  <text x="560" y="195" class="p" fill="#111">-57%</text>
-  <!-- Abstractions: 64 vs 8 -->
-  <text x="130" y="223" text-anchor="end" class="l">Abstractions</text>
-  <rect x="136" y="206" width="380" height="16" class="b0" rx="3"/>
-  <rect x="136" y="230" width="48" height="16" class="b1" rx="3"/>
-  <text x="522" y="221" class="v" fill="#888">64</text>
-  <text x="194" y="245" class="v" fill="#fff">8</text>
-  <text x="560" y="245" class="p" fill="#111">-88%</text>
-  <!-- Complexity: 140 vs 31 -->
-  <text x="130" y="273" text-anchor="end" class="l">Complexity</text>
-  <rect x="136" y="256" width="380" height="16" class="b0" rx="3"/>
-  <rect x="136" y="280" width="84" height="16" class="b1" rx="3"/>
-  <text x="522" y="271" class="v" fill="#888">140</text>
-  <text x="230" y="295" class="v" fill="#fff">31</text>
-  <text x="560" y="295" class="p" fill="#111">-78%</text>
-  <!-- File size: 15954 vs 3397 -->
-  <text x="130" y="323" text-anchor="end" class="l">File size</text>
-  <rect x="136" y="306" width="380" height="16" class="b0" rx="3"/>
-  <rect x="136" y="330" width="81" height="16" class="b1" rx="3"/>
-  <text x="522" y="321" class="v" fill="#888">15,954 B</text>
-  <text x="227" y="345" class="v" fill="#fff">3,397 B</text>
-  <text x="560" y="345" class="p" fill="#111">-79%</text>
-</svg>
-
-| Metric | No-skill | Chiseled | Reduction |
-|--------|----------|----------|-----------|
-| Lines of code | 567 | 104 | -82% |
-| Tokens (est.) | 3,588 | 944 | -74% |
-| Dependencies | 14 | 6 | -57% |
-| Abstractions | 64 | 8 | -88% |
-| Complexity | 140 | 31 | -78% |
-| File size | 15,954 B | 3,397 B | -79% |
+```text
+Metric                No-skill    Chiseled    Reduction
+──────────────────────────────────────────────────────────
+Lines of code          567          104          -82%
+Tokens (est.)        3,588          944          -74%
+Dependencies            14            6          -57%
+Abstractions            64            8          -88%
+Complexity             140           31          -78%
+File size          15,954 B      3,397 B         -79%
+```
 
 </div>
 
@@ -235,72 +179,16 @@ Analytical comparison of no-skill vs chiseled reference implementations for 7 ta
 
 <div align="center">
 
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 360" width="660" height="360" role="img" aria-label="Simple tasks benchmark: no-skill (gray) vs chiseled (dark) across 6 metrics with percentage reduction.">
-  <style>
-    text.l { font: 13px/1.2 system-ui, -apple-system, sans-serif; fill: #333; }
-    text.v { font: 12px/1.2 system-ui, -apple-system, sans-serif; font-weight: 600; }
-    text.t { font: 14px/1.2 system-ui, -apple-system, sans-serif; font-weight: 700; fill: #111; }
-    text.p { font: 11px/1.2 system-ui, -apple-system, sans-serif; font-weight: 700; }
-    .b0 { fill: #bbb; }
-    .b1 { fill: #222; }
-  </style>
-  <text x="330" y="20" text-anchor="middle" class="t">Simple Tasks (6)</text>
-  <rect x="175" y="32" width="10" height="10" class="b0" rx="1"/>
-  <text x="189" y="41" class="l">No-skill</text>
-  <rect x="260" y="32" width="10" height="10" class="b1" rx="1"/>
-  <text x="274" y="41" class="l">Chiseled</text>
-  <!-- LOC: 331 vs 72 -->
-  <text x="130" y="73" text-anchor="end" class="l">LOC</text>
-  <rect x="136" y="56" width="380" height="16" class="b0" rx="3"/>
-  <rect x="136" y="80" width="83" height="16" class="b1" rx="3"/>
-  <text x="522" y="71" class="v" fill="#888">331</text>
-  <text x="229" y="95" class="v" fill="#fff">72</text>
-  <text x="560" y="95" class="p" fill="#111">-78%</text>
-  <!-- Tokens: 2259 vs 550 -->
-  <text x="130" y="123" text-anchor="end" class="l">Tokens</text>
-  <rect x="136" y="106" width="380" height="16" class="b0" rx="3"/>
-  <rect x="136" y="130" width="93" height="16" class="b1" rx="3"/>
-  <text x="522" y="121" class="v" fill="#888">2,259</text>
-  <text x="239" y="145" class="v" fill="#fff">550</text>
-  <text x="560" y="145" class="p" fill="#111">-76%</text>
-  <!-- Deps: 9 vs 5 -->
-  <text x="130" y="173" text-anchor="end" class="l">Deps</text>
-  <rect x="136" y="156" width="380" height="16" class="b0" rx="3"/>
-  <rect x="136" y="180" width="211" height="16" class="b1" rx="3"/>
-  <text x="522" y="171" class="v" fill="#888">9</text>
-  <text x="357" y="195" class="v" fill="#fff">5</text>
-  <text x="560" y="195" class="p" fill="#111">-44%</text>
-  <!-- Abstractions: 23 vs 6 -->
-  <text x="130" y="223" text-anchor="end" class="l">Abstractions</text>
-  <rect x="136" y="206" width="380" height="16" class="b0" rx="3"/>
-  <rect x="136" y="230" width="99" height="16" class="b1" rx="3"/>
-  <text x="522" y="221" class="v" fill="#888">23</text>
-  <text x="245" y="245" class="v" fill="#fff">6</text>
-  <text x="560" y="245" class="p" fill="#111">-74%</text>
-  <!-- Complexity: 71 vs 17 -->
-  <text x="130" y="273" text-anchor="end" class="l">Complexity</text>
-  <rect x="136" y="256" width="380" height="16" class="b0" rx="3"/>
-  <rect x="136" y="280" width="91" height="16" class="b1" rx="3"/>
-  <text x="522" y="271" class="v" fill="#888">71</text>
-  <text x="237" y="295" class="v" fill="#fff">17</text>
-  <text x="560" y="295" class="p" fill="#111">-76%</text>
-  <!-- File size: 9610 vs 2145 -->
-  <text x="130" y="323" text-anchor="end" class="l">File size</text>
-  <rect x="136" y="306" width="380" height="16" class="b0" rx="3"/>
-  <rect x="136" y="330" width="85" height="16" class="b1" rx="3"/>
-  <text x="522" y="321" class="v" fill="#888">9,610 B</text>
-  <text x="231" y="345" class="v" fill="#fff">2,145 B</text>
-  <text x="560" y="345" class="p" fill="#111">-78%</text>
-</svg>
-
-| Metric | No-skill | Chiseled | Reduction |
-|--------|----------|----------|-----------|
-| Lines of code | 331 | 72 | -78% |
-| Tokens (est.) | 2,259 | 550 | -76% |
-| Dependencies | 9 | 5 | -44% |
-| Abstractions | 23 | 6 | -74% |
-| Complexity | 71 | 17 | -76% |
-| File size | 9,610 B | 2,145 B | -78% |
+```text
+Metric                No-skill    Chiseled    Reduction
+──────────────────────────────────────────────────────────
+Lines of code          331           72          -78%
+Tokens (est.)        2,259          550          -76%
+Dependencies             9            5          -44%
+Abstractions            23            6          -74%
+Complexity              71           17          -76%
+File size           9,610 B      2,145 B         -78%
+```
 
 </div>
 
@@ -308,72 +196,16 @@ Analytical comparison of no-skill vs chiseled reference implementations for 7 ta
 
 <div align="center">
 
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 360" width="660" height="360" role="img" aria-label="Complex task benchmark: no-skill (gray) vs chiseled (dark) across 6 metrics with percentage reduction.">
-  <style>
-    text.l { font: 13px/1.2 system-ui, -apple-system, sans-serif; fill: #333; }
-    text.v { font: 12px/1.2 system-ui, -apple-system, sans-serif; font-weight: 600; }
-    text.t { font: 14px/1.2 system-ui, -apple-system, sans-serif; font-weight: 700; fill: #111; }
-    text.p { font: 11px/1.2 system-ui, -apple-system, sans-serif; font-weight: 700; }
-    .b0 { fill: #bbb; }
-    .b1 { fill: #222; }
-  </style>
-  <text x="330" y="20" text-anchor="middle" class="t">Complex Task (Order Pipeline)</text>
-  <rect x="175" y="32" width="10" height="10" class="b0" rx="1"/>
-  <text x="189" y="41" class="l">No-skill</text>
-  <rect x="260" y="32" width="10" height="10" class="b1" rx="1"/>
-  <text x="274" y="41" class="l">Chiseled</text>
-  <!-- LOC: 236 vs 32 -->
-  <text x="130" y="73" text-anchor="end" class="l">LOC</text>
-  <rect x="136" y="56" width="380" height="16" class="b0" rx="3"/>
-  <rect x="136" y="80" width="52" height="16" class="b1" rx="3"/>
-  <text x="522" y="71" class="v" fill="#888">236</text>
-  <text x="198" y="95" class="v" fill="#fff">32</text>
-  <text x="560" y="95" class="p" fill="#111">-86%</text>
-  <!-- Tokens: 1329 vs 394 -->
-  <text x="130" y="123" text-anchor="end" class="l">Tokens</text>
-  <rect x="136" y="106" width="380" height="16" class="b0" rx="3"/>
-  <rect x="136" y="130" width="113" height="16" class="b1" rx="3"/>
-  <text x="522" y="121" class="v" fill="#888">1,329</text>
-  <text x="259" y="145" class="v" fill="#fff">394</text>
-  <text x="560" y="145" class="p" fill="#111">-70%</text>
-  <!-- Deps: 5 vs 1 -->
-  <text x="130" y="173" text-anchor="end" class="l">Deps</text>
-  <rect x="136" y="156" width="380" height="16" class="b0" rx="3"/>
-  <rect x="136" y="180" width="76" height="16" class="b1" rx="3"/>
-  <text x="522" y="171" class="v" fill="#888">5</text>
-  <text x="222" y="195" class="v" fill="#fff">1</text>
-  <text x="560" y="195" class="p" fill="#111">-80%</text>
-  <!-- Abstractions: 41 vs 2 -->
-  <text x="130" y="223" text-anchor="end" class="l">Abstractions</text>
-  <rect x="136" y="206" width="380" height="16" class="b0" rx="3"/>
-  <rect x="136" y="230" width="19" height="16" class="b1" rx="3"/>
-  <text x="522" y="221" class="v" fill="#888">41</text>
-  <text x="165" y="245" class="v" fill="#fff">2</text>
-  <text x="560" y="245" class="p" fill="#111">-95%</text>
-  <!-- Complexity: 69 vs 14 -->
-  <text x="130" y="273" text-anchor="end" class="l">Complexity</text>
-  <rect x="136" y="256" width="380" height="16" class="b0" rx="3"/>
-  <rect x="136" y="280" width="77" height="16" class="b1" rx="3"/>
-  <text x="522" y="271" class="v" fill="#888">69</text>
-  <text x="223" y="295" class="v" fill="#fff">14</text>
-  <text x="560" y="295" class="p" fill="#111">-80%</text>
-  <!-- File size: 6344 vs 1252 -->
-  <text x="130" y="323" text-anchor="end" class="l">File size</text>
-  <rect x="136" y="306" width="380" height="16" class="b0" rx="3"/>
-  <rect x="136" y="330" width="75" height="16" class="b1" rx="3"/>
-  <text x="522" y="321" class="v" fill="#888">6,344 B</text>
-  <text x="221" y="345" class="v" fill="#fff">1,252 B</text>
-  <text x="560" y="345" class="p" fill="#111">-80%</text>
-</svg>
-
-| Metric | No-skill | Chiseled | Reduction |
-|--------|----------|----------|-----------|
-| Lines of code | 236 | 32 | -86% |
-| Tokens (est.) | 1,329 | 394 | -70% |
-| Dependencies | 5 | 1 | -80% |
-| Abstractions | 41 | 2 | -95% |
-| Complexity | 69 | 14 | -80% |
-| File size | 6,344 B | 1,252 B | -80% |
+```text
+Metric                No-skill    Chiseled    Reduction
+──────────────────────────────────────────────────────────
+Lines of code          236           32          -86%
+Tokens (est.)        1,329          394          -70%
+Dependencies             5            1          -80%
+Abstractions            41            2          -95%
+Complexity              69           14          -80%
+File size           6,344 B      1,252 B         -80%
+```
 
 </div>
 
