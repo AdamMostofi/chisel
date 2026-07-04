@@ -1,0 +1,9 @@
+Write a Python function that validates email addresses.
+
+Requirements:
+- Check for @ sign
+- Check for domain (part after @ has at least one dot)
+- Return a boolean
+- Handle edge cases: empty string, None, whitespace only
+
+Write ONLY the function and one-line docstring. No examples, no test calls, no main block.

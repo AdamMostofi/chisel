@@ -1,0 +1,9 @@
+Write a JavaScript debounce function.
+
+Requirements:
+- Takes a function and delay in milliseconds
+- Returns a debounced version that delays invocation
+- Leading edge option (optional)
+- Cancel method on the returned function
+
+Write ONLY the function. No examples, no test calls.

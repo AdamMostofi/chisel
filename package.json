@@ -1,0 +1,31 @@
+{
+  "name": "@adammostofi/chisel",
+  "version": "1.0.0",
+  "description": "A tool for carving away excess. Disciplined engineering principle for AI agents.",
+  "keywords": ["opencode-plugin", "opencode", "chisel", "skills"],
+  "license": "MIT",
+  "author": {
+    "name": "Your Name",
+    "url": "https://github.com/AdamMostofi"
+  },
+  "homepage": "https://github.com/AdamMostofi/chisel",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AdamMostofi/chisel.git"
+  },
+  "bugs": {
+    "url": "https://github.com/AdamMostofi/chisel/issues"
+  },
+  "files": [
+    "AGENTS.md",
+    "skills/",
+    ".opencode/",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "echo \"No tests yet\" && exit 0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

@@ -1,0 +1,9 @@
+Write a Python script that reads a CSV file with columns "name,amount" and prints the total of all amounts.
+
+Requirements:
+- Read from a file path passed as a command-line argument
+- Handle empty files gracefully (total = 0)
+- Handle files with header row only
+- Print just the number, nothing else
+
+Write the complete script.

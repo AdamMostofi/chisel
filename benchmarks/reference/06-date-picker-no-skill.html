@@ -1,0 +1,52 @@
+<!-- Date picker — no-skill version. JS widget with validation library. -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registration</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <style>
+        .form-group { margin-bottom: 1rem; }
+        label { display: block; margin-bottom: 0.25rem; }
+        .error { color: red; font-size: 0.875rem; }
+    </style>
+</head>
+<body>
+    <form id="registration">
+        <div class="form-group">
+            <label for="dob">Date of Birth</label>
+            <input type="text" id="dob" name="dob" required>
+            <span class="error" id="dob-error"></span>
+        </div>
+        <button type="submit">Register</button>
+    </form>
+
+    <script>
+        const dobInput = document.getElementById('dob');
+        const dobError = document.getElementById('dob-error');
+
+        const picker = flatpickr(dobInput, {
+            maxDate: new Date(),
+            dateFormat: 'Y-m-d',
+            onChange: validateAge
+        });
+
+        function validateAge(selectedDates) {
+            if (selectedDates.length === 0) return;
+            const date = selectedDates[0];
+            const now = new Date();
+            let age = now.getFullYear() - date.getFullYear();
+            const monthDiff = now.getMonth() - date.getMonth();
+            if (monthDiff < 0 || (monthDiff === 0 && now.getDate() < date.getDate())) {
+                age--;
+            }
+            if (age < 13) {
+                dobError.textContent = 'You must be at least 13 years old.';
+                return false;
+            }
+            dobError.textContent = '';
+            return true;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+Write a JavaScript countdown timer function.
+
+Requirements:
+- Takes seconds (number)
+- Returns a promise that resolves after that many seconds
+- Prints remaining seconds to console every second
+- Accepts an optional callback that fires each tick with remaining seconds
+
+Write ONLY the function. No examples.

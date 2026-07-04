@@ -1,0 +1,10 @@
+Write a Python rate limiter class.
+
+Requirements:
+- Limits the number of function calls per minute
+- Decorator-based API (@rate_limit(calls=10, per=60))
+- Configurable calls and time window
+- Raises RateLimitExceeded when limit hit
+- Thread-safe
+
+Write ONLY the class and decorator. No examples.

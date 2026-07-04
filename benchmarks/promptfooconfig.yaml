@@ -1,0 +1,110 @@
+# Chisel Benchmark Configuration
+
+# Run: promptfoo eval
+# Requires: promptfoo >= 0.100.0
+
+description: "chisel benchmark — 6 tasks × 3 arms (no-skill vs chisel-lite vs chisel-full)"
+
+# Default provider — override with --provider
+providers:
+  - id: openai:gpt-4o-mini
+    label: gpt-4o-mini
+
+# Three prompt templates — each test is run with all three
+prompts:
+  # Arm 1: no-skill — bare task, no instructions
+  - "{{task}}"
+
+  # Arm 2: chisel-lite — ladder only
+  - |
+    CHISEL MODE ACTIVE — level: **lite**
+
+    ## The Ladder (Pass 1)
+
+    Before any code, stop at the first rung that holds (the ladder runs after you understand the problem, not instead of it):
+    1. **YAGNI** — Does this need to exist? Speculative need = skip it.
+    2. **Boy Scout** — Leave every file you touch cleaner than you found it.
+    3. **DRY** — Already in this codebase? Reuse it before rewriting.
+    4. **Stdlib** — Does the standard library do it? Use it.
+    5. **Native** — Does a native platform feature cover it? Use it.
+    6. **Installed dep** — Already-installed dependency? Use it. Never add a new one for a few lines.
+    7. **One line** — Can it be one expression? One line.
+    8. **Minimum code** — Only then: write the minimum that works.
+
+    **Bug fix = root cause, not symptom.**
+
+    ## When NOT to Carve
+    Never simplify away: input validation at trust boundaries, error handling that prevents data loss, security measures, accessibility basics.
+    Never skip understanding the problem.
+
+    ## Rules
+    - No unrequested abstractions. No interface with one implementation.
+    - No new dependency if stdlib or native platform covers it.
+    - Deletion over addition. Boring over clever.
+    - Mark deliberate shortcuts with `chisel:` comment naming ceiling AND upgrade path.
+
+    {{task}}
+
+  # Arm 3: chisel-full — ladder + discipline gate
+  - |
+    CHISEL MODE ACTIVE — level: **full**
+
+    ## The Ladder (Pass 1)
+
+    Before any code, stop at the first rung that holds (the ladder runs after you understand the problem, not instead of it):
+    1. **YAGNI** — Does this need to exist? Speculative need = skip it.
+    2. **Boy Scout** — Leave every file you touch cleaner than you found it.
+    3. **DRY** — Already in this codebase? Reuse it before rewriting.
+    4. **Stdlib** — Does the standard library do it? Use it.
+    5. **Native** — Does a native platform feature cover it? Use it.
+    6. **Installed dep** — Already-installed dependency? Use it. Never add a new one for a few lines.
+    7. **One line** — Can it be one expression? One line.
+    8. **Minimum code** — Only then: write the minimum that works.
+
+    **Bug fix = root cause, not symptom.**
+
+    ## The Discipline Gate (Pass 2)
+
+    After writing code, scan the diff for:
+    - **Touched files** — leave cleaner than found. Delete dead code, tighten loose patterns.
+    - **New abstractions** — Rule of Three check. No interface with one implementation, no factory for one product.
+    - **New dependencies** — stdlib/native check. Every new dep must survive audit.
+    - **`chisel:` comments** — each names a ceiling AND an upgrade path.
+    - **Verdict** — ship if clean; revise if any check fails.
+
+    ## When NOT to Carve
+    Never simplify away: input validation at trust boundaries, error handling that prevents data loss, security measures, accessibility basics.
+    Never skip understanding the problem.
+
+    ## Rules
+    - No unrequested abstractions. No interface with one implementation.
+    - No new dependency if stdlib or native platform covers it.
+    - Deletion over addition. Boring over clever.
+    - Mark deliberate shortcuts with `chisel:` comment naming ceiling AND upgrade path.
+
+    **Output conventions:** Code first. Then at most three short lines: what was skipped, when to add it.
+
+    {{task}}
+
+# Tests — each runs against all 3 prompt arms above
+tests:
+  - vars:
+      task: file://tasks/01-email-validator.txt
+
+  - vars:
+      task: file://tasks/02-debounce.txt
+
+  - vars:
+      task: file://tasks/03-csv-sum.txt
+
+  - vars:
+      task: file://tasks/04-countdown.txt
+
+  - vars:
+      task: file://tasks/05-rate-limiter.txt
+
+  - vars:
+      task: file://tasks/06-date-picker.txt
+
+# Output
+outputPath: results/output.json
