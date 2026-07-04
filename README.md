@@ -17,19 +17,13 @@
   <code>#yagni</code> <code>#minimal-code</code> <code>#ai-discipline</code> <code>#over-engineering-guard</code>
 </p>
 
-Chisel is a disciplined engineering principle for AI agents. It injects a decision ladder into every coding turn -- questioning whether code needs to exist, whether files are left cleaner than found, whether the standard library covers the task, and whether abstractions are proven before extracted. The result is code that looks like a person wrote it: deliberate, minimal, correct.
-
-Chisel is for developers tired of AI agents that generate speculative abstractions, library soup, class hierarchies for single-use code, and dead flexibility. It is for teams that want AI to produce fewer lines, fewer files, and fewer dependencies -- the right code and nothing else.
+Chisel is a decision ladder for AI agents: YAGNI, Boy Scout, DRY, Rule of Three, Stdlib First. It catches over-engineering before it happens.
 
 ---
 
 ## What is Chisel?
 
-Chisel is a structured discipline for AI-assisted coding. It does not add rules -- it removes the need for them by applying a small set of principles before every line of code is written.
-
-The name is the philosophy: carve away everything that is not the solution. AI agents naturally expand to fill all available tokens with code. Chisel reverses that -- it contracts, simplifies, and clarifies.
-
-Chisel is language-agnostic (TypeScript, Python, Go, Rust, any). It works at the structural level, not the syntactic one. Linters catch formatting errors. Chisel catches unnecessary abstractions, premature generality, and dependency bloat.
+Carve away everything that isn't the solution. Language-agnostic. Structural, not syntactic.
 
 ---
 
@@ -39,13 +33,13 @@ Chisel is language-agnostic (TypeScript, Python, Go, Rust, any). It works at the
 
 | Principle | Meaning |
 |-----------|---------|
-| **YAGNI (You Ain't Gonna Need It)** | Only build what the current requirement demands. Speculative generality, future-proofing hooks, and unused parameters are waste. Delete them. |
-| **Boy Scout Rule** | Leave every file you touch cleaner than you found it. Rename a cryptic variable, delete a dead code path, tighten a loose pattern. If you touch it, improve it. |
-| **DRY (Don't Repeat Yourself)** | Same knowledge lives once. Lookalike code that means different things stays separate. Shape duplication is not knowledge duplication -- inline until the meaning is shared. |
-| **Rule of Three** | One instance is a fact. Two is a coincidence. Three is a pattern. Extract at three. Before that, the friction between instances tells you what shape the abstraction should take. |
-| **Stdlib First** | Standard library before dependencies. Native platform before libraries. Installed package before new one. `<input type="date">` over a date-picker library. CSS over JS. DB constraint over application validation. |
-| **Bug Fix = Root Cause** | A report names a symptom. Grep every caller before you edit. Fix where all callers route through, not where the ticket says. One guard in the shared function is a smaller diff than a guard in every caller. |
-| **Comment Convention** | Every shortcut uses a `chisel:` prefix. The comment names the ceiling and the upgrade path. Example: `// chisel: global lock, per-account locks if throughput matters`. This signals intent, not ignorance. |
+| **YAGNI** | Only build what's needed now. Speculation is waste. |
+| **Boy Scout** | Leave every file cleaner than you found it. |
+| **DRY** | Same knowledge lives once. Shape duplication is not knowledge duplication. |
+| **Rule of Three** | 1 instance = fact. 2 = coincidence. 3 = pattern. Extract at 3. |
+| **Stdlib First** | Stdlib > new dep. Native > library. `<input type="date">` over a date-picker library. |
+| **Bug Fix = Root Cause** | Grep every caller. Fix where all callers route through, not where the ticket says. |
+| **Comment Convention** | `chisel:` prefix. Name the ceiling + upgrade path. |
 
 </div>
 
