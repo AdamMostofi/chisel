@@ -1,6 +1,6 @@
 {
   "name": "@adammostofi/chisel",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A tool for carving away excess. Disciplined engineering principle for AI agents.",
   "keywords": ["opencode-plugin", "opencode", "chisel", "skills"],
   "license": "MIT",

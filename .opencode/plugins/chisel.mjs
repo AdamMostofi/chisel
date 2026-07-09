@@ -171,7 +171,8 @@ export default async ({ client } = {}) => {
   };
 
   return {
-    // Register the skills directory so OpenCode discovers skills/chisel/SKILL.md.
+    // Register the skills directory and slash commands so OpenCode discovers
+    // skills/chisel/SKILL.md and shows /chisel /chisel-gate in the TUI palette.
     config(cfg) {
       cfg.skills = cfg.skills || {};
       cfg.skills.paths = cfg.skills.paths || [];
@@ -179,6 +180,16 @@ export default async ({ client } = {}) => {
       if (!cfg.skills.paths.includes(skillsDir)) {
         cfg.skills.paths.push(skillsDir);
       }
+      // Register slash commands so they appear in the TUI command palette.
+      cfg.command = cfg.command || {};
+      cfg.command.chisel = cfg.command.chisel || {
+        template: '',
+        description: 'Report or set chisel mode (full, lite, off)',
+      };
+      cfg.command['chisel-gate'] = cfg.command['chisel-gate'] || {
+        template: '',
+        description: 'Trigger discipline gate manually (lite mode)',
+      };
     },
 
     // Prepend chisel rules to the system prompt every turn.
@@ -202,36 +213,51 @@ export default async ({ client } = {}) => {
       );
     },
 
-    // Persist mode changes and handle /chisel-gate.
-    async 'command.execute.before'(input) {
+    // Persist mode changes, handle /chisel-gate, and prevent LLM round-trip.
+    async 'command.execute.before'(input, output) {
       if (!input || !input.command) return;
+
+      const sendIgnored = async (text) => {
+        try {
+          await client.session.prompt({
+            path: { id: input.sessionID },
+            body: { noReply: true, parts: [{ type: 'text', text, ignored: true }] },
+          });
+        } catch {
+          // client.session.prompt may not be available in all OpenCode versions.
+          // Fall back to modifying output text.
+          output.parts = [{ type: 'text', text }];
+        }
+      };
 
       if (input.command === 'chisel') {
         const arg = (input.arguments || '').trim().toLowerCase();
         if (!arg || arg === 'status') {
-          log('info', 'chisel mode: ' + currentMode());
-          return;
+          await sendIgnored('chisel mode: ' + currentMode());
+          throw new Error('__CHISEL_HANDLED__');
         }
         if (MODES.has(arg)) {
           writeState({ mode: arg, gatePending: false });
-          log('info', 'chisel ' + arg);
+          await sendIgnored('chisel ' + arg);
+          throw new Error('__CHISEL_HANDLED__');
         }
-        return;
+        await sendIgnored(
+          'Invalid chisel mode: "' + arg + '". Valid: full, lite, off.',
+        );
+        throw new Error('__CHISEL_HANDLED__');
       }
 
       if (input.command === 'chisel-gate') {
         const s = readState();
         if (s.mode !== 'lite') {
-          log(
-            'info',
-            'chisel-gate: only available in lite mode (current: ' + s.mode + ')',
+          await sendIgnored(
+            'chisel-gate only available in lite mode (current: ' + s.mode + ')',
           );
-          return;
+          throw new Error('__CHISEL_HANDLED__');
         }
-        // Flag the gate for the next system transform pass — the agent will
-        // see the full Discipline Gate instructions in its prompt next turn.
         writeState({ ...s, gatePending: true });
-        log('info', 'chisel-gate queued');
+        await sendIgnored('chisel-gate queued for next turn');
+        throw new Error('__CHISEL_HANDLED__');
       }
     },
   };
